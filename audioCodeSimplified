@@ -1,0 +1,27 @@
+   import UIKit
+   import AVFoundation
+
+class ViewController: UIViewController {
+    
+    var player: AVAudioPlayer!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+   // this IBAction gets linked to all buttons
+   
+   @IBAction func keyPressed(_ sender: UIButton) {
+        
+        playSound(soundName: sender.currentTitle!)
+    }
+    // to simplify, we are calling the soundName with the current title of specific button pressed instead of writing code for each individual letter/button
+ 
+    
+    func playSound(soundName: String) {
+        let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+                
+    }
+}
